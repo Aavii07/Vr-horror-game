@@ -263,8 +263,6 @@ MonoBehaviour:
   m_Name: Standalone
   m_EditorClassIdentifier: Unity.XR.OpenXR::UnityEngine.XR.OpenXR.OpenXRSettings
   features:
-  - {fileID: -2293996496814658199}
-  - {fileID: -2684713293814026403}
   - {fileID: 2674117681740590148}
   - {fileID: -4267726271949978892}
   - {fileID: 7005235605039343507}
@@ -274,6 +272,7 @@ MonoBehaviour:
   - {fileID: -5093342172201753691}
   - {fileID: 2603827674363932213}
   - {fileID: -7490979987523889088}
+  - {fileID: -2293996496814658199}
   - {fileID: -1550712894363301861}
   - {fileID: 1110440289090350348}
   - {fileID: -3510047904447880545}
@@ -284,6 +283,7 @@ MonoBehaviour:
   - {fileID: 8188089581440691414}
   - {fileID: 8414709623168597895}
   - {fileID: 4121906638887092849}
+  - {fileID: -2684713293814026403}
   customLoaderName: 
   m_renderMode: 1
   m_latencyOptimization: 0
