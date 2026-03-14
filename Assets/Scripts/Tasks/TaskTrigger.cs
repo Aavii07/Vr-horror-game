@@ -23,12 +23,4 @@ public class TaskTrigger : MonoBehaviour
     {
         CompleteThisTask();
     }
-
-    private void OnTriggerEnter(Collider other) 
-    {
-        if (other.CompareTag("Player")) 
-        {
-            CompleteThisTask();
-        }
-    }
 }

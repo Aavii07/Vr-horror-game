@@ -16,46 +16,76 @@ public class UIManager : MonoBehaviour
         Instance = this;
     }
 
-    void Start() 
+    public void OnTasksLoaded(TaskData[] loadedTasks)
     {
-        TaskManager tm = FindObjectOfType<TaskManager>();
+        if (loadedTasks == null || loadedTasks.Length == 0) return;
         
-        if (tm != null && tm.tasks != null)
+        foreach (TaskData task in loadedTasks)
+            task.completed = false;
+        
+        CreateChecklist(new List<TaskData>(loadedTasks));
+    }
+    
+    public void RefreshChecklist(TaskData[] updatedTasks)
+    {
+        // Clear existing toggles
+        foreach (Transform child in checklistParent) 
+            Destroy(child.gameObject);
+        
+        toggleMap.Clear();
+        
+        if (updatedTasks == null || updatedTasks.Length == 0)
         {
-            // Force reset of all tasks before creating UI
-            foreach (TaskData task in tm.tasks)
+            Debug.Log("No tasks to display - checklist cleared");
+            return;
+        }
+        
+        // Recreate with updated tasks
+        foreach(TaskData task in updatedTasks) 
+        {
+            GameObject toggleObj = Instantiate(togglePrefab, checklistParent);
+            Toggle toggle = toggleObj.GetComponent<Toggle>();
+            
+            Transform nameTransform = toggle.transform.Find("TaskName");
+            if (nameTransform != null)
             {
-                task.completed = false;
+                Text nameText = nameTransform.GetComponent<Text>();
+                if (nameText != null)
+                    nameText.text = task.taskName;
             }
             
-            CreateChecklist(new List<TaskData>(tm.tasks));
+            toggle.isOn = task.completed;
+            toggleMap.Add(task, toggle);
         }
+    }
+    
+    public void ClearChecklist()
+    {
+        foreach (Transform child in checklistParent) 
+            Destroy(child.gameObject);
+        
+        toggleMap.Clear();
+        Debug.Log("Checklist cleared");
     }
 
     public void CreateChecklist(List<TaskData> tasks) 
     {
         foreach (Transform child in checklistParent) 
-        {
             Destroy(child.gameObject);
-        }
         
         toggleMap.Clear();
 
         foreach(TaskData task in tasks) 
         {
             GameObject toggleObj = Instantiate(togglePrefab, checklistParent);
-            
             Toggle toggle = toggleObj.GetComponent<Toggle>();
             
-            // Find the TaskName label in the Toggle prefab
             Transform nameTransform = toggle.transform.Find("TaskName");
             if (nameTransform != null)
             {
                 Text nameText = nameTransform.GetComponent<Text>();
                 if (nameText != null)
-                {
                     nameText.text = task.taskName;
-                }
             }
             
             toggle.isOn = task.completed;
@@ -66,12 +96,6 @@ public class UIManager : MonoBehaviour
     public void MarkComplete(TaskData task) 
     {
         if (toggleMap.ContainsKey(task)) 
-        {
             toggleMap[task].isOn = true;
-        } 
-        else 
-        {
-            Debug.LogWarning($"Task {task.taskName} not found in UI map");
-        }
     }
 }
