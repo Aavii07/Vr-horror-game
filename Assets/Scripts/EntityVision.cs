@@ -29,7 +29,12 @@ public class EntityVision : MonoBehaviour
     private int _currentPatrolIndex;
     private float _patrolWaitTimer;
 
-    private enum State { Patrol, Chasing, Lingering, Investigating }
+
+
+    // Patrol: default state. Follows the path that has been designated by the Patrol points 
+    // Chasing: seen the player and now is following them
+    // Investigating: Lost sight of the player so now is going to the last known location
+    private enum State { Patrol, Chasing, Investigating }
     private State _state = State.Patrol;
 
     void Start()
@@ -47,53 +52,61 @@ public class EntityVision : MonoBehaviour
     {
         if (target == null) return;
 
+
+
+        // Start the chase and go towards the target
         if (CanSeeTarget())
         {
             _lastKnownPosition = target.position;
-            _lostSightTimer = lostSightDelay;
 
             _state = State.Chasing;
             _agent.SetDestination(target.position);
 
             RotateTowards(target.position);
         }
-        else if (_state == State.Chasing || _state == State.Lingering)
+
+        // Just lost sight or is still following the location after losing sight
+        // Goes towards the player's last known position and then once it gets there,
+        // if it hasn't see the player yet, go back to paatroling
+        else if (_state == State.Chasing || _state == State.Investigating)
         {
-            _state = State.Lingering;
-            _lostSightTimer -= Time.deltaTime;
+            _state = State.Investigating;
+
 
             _agent.SetDestination(_lastKnownPosition);
             RotateTowards(_lastKnownPosition);
 
-            if (_lostSightTimer <= 0f)
-            {
-                _state = State.Investigating;
-                _agent.SetDestination(_lastKnownPosition);
-            }
-        }
-        else if (_state == State.Investigating)
-        {
+
+            // enemy has gotten to the player's location and hasn't seen the player
+            // now start patrolling
             if (!_agent.pathPending && _agent.remainingDistance < 0.5f)
             {
                 _state = State.Patrol;
                 GoToNextPatrolPoint();
             }
         }
-        else if (_state == State.Patrol)
+
+        // It is not chasing or investigating the last spot it saw the player, go back to following the patrol points
+        else
         {
+            _state = State.Patrol;
             Patrol();
         }
     }
 
+    // Follow the patrol path that has been designated
+    // Goes to each point, waits the designated _patrolWaitTimer, then goes to next
     void Patrol()
     {
         if (patrolPath == null || patrolPath.PointCount == 0)
             return;
 
+        // Does not set the next location untill it has actually reached the patrol point
         if (!_agent.pathPending && _agent.remainingDistance < 0.5f)
         {
             _patrolWaitTimer += Time.deltaTime;
 
+            //Has waited out the timer
             if (_patrolWaitTimer >= patrolWaitTime)
             {
                 GoToNextPatrolPoint();
@@ -102,6 +115,7 @@ public class EntityVision : MonoBehaviour
         }
     }
 
+    // Sets the next patrol point based off the given PatrolPath
     void GoToNextPatrolPoint()
     {
         if (patrolPath == null || patrolPath.PointCount == 0)
@@ -113,6 +127,7 @@ public class EntityVision : MonoBehaviour
         _agent.SetDestination(nextPoint.position);
     }
 
+    // Rotates towards a given direction
     void RotateTowards(Vector3 position)
     {
         Vector3 direction = (position - transform.position).normalized;
@@ -129,21 +144,27 @@ public class EntityVision : MonoBehaviour
         );
     }
 
+    //Checks if it can see the target
+    //Returns true if yes, returns false if not
     bool CanSeeTarget()
     {
-        Vector3 origin = transform.position + Vector3.up * 1.5f;
+        
+        Vector3 origin = transform.position + Vector3.up * 1.5f; //might not need this
         Vector3 directionToTarget = target.position - origin;
 
         float distanceToTarget = directionToTarget.magnitude;
 
+        // target is too far
         if (distanceToTarget > sightRange)
             return false;
 
         float angle = Vector3.Angle(transform.forward, directionToTarget.normalized);
 
+        // target is in distance but outside of field of view
         if (angle > fieldOfView / 2f)
             return false;
 
+        // target is behind an obstacle
         if (Physics.Raycast(origin, directionToTarget.normalized, distanceToTarget, obstacleLayer))
             return false;
 
@@ -162,6 +183,10 @@ public class EntityVision : MonoBehaviour
 
         Gizmos.DrawRay(origin, left * sightRange);
         Gizmos.DrawRay(origin, right * sightRange);
+
+
+        // make a switch function that sets the color based on what state the enemy is in
+
 
         if (target != null)
         {
