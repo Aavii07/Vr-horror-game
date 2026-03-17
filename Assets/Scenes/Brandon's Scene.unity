@@ -141,7 +141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8281557671461682911, guid: 4ba47e811ac9a5a42b68f460613cf8bc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9.5
+      value: -11.05
       objectReference: {fileID: 0}
     - target: {fileID: 8281557671461682911, guid: 4ba47e811ac9a5a42b68f460613cf8bc, type: 3}
       propertyPath: m_LocalRotation.w
@@ -919,15 +919,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8281557671461682911, guid: 4ba47e811ac9a5a42b68f460613cf8bc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.21
+      value: -0.23
       objectReference: {fileID: 0}
     - target: {fileID: 8281557671461682911, guid: 4ba47e811ac9a5a42b68f460613cf8bc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.18
+      value: -0.03
       objectReference: {fileID: 0}
     - target: {fileID: 8281557671461682911, guid: 4ba47e811ac9a5a42b68f460613cf8bc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.52
+      value: -0.56
       objectReference: {fileID: 0}
     - target: {fileID: 8281557671461682911, guid: 4ba47e811ac9a5a42b68f460613cf8bc, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1330,7 +1330,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   target: {fileID: 168867374}
-  lostSightDelay: 4
   speed: 3
   rotationSpeed: 6
   patrolPath: {fileID: 437841668}

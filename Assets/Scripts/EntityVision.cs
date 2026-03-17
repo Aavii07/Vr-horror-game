@@ -11,7 +11,6 @@ public class EntityVision : MonoBehaviour
     [SerializeField] private Transform target;
 
     [Header("Chase")]
-    [SerializeField] private float lostSightDelay = 4f;
     [SerializeField] private float speed = 5f;
     [SerializeField] private float rotationSpeed = 6f;
 
@@ -19,8 +18,6 @@ public class EntityVision : MonoBehaviour
     [SerializeField] private PatrolPath patrolPath;
     [SerializeField] private float patrolWaitTime = 2f;
 
-
-    
 
     private NavMeshAgent _agent;
     private Vector3 _lastKnownPosition;
@@ -52,8 +49,6 @@ public class EntityVision : MonoBehaviour
     {
         if (target == null) return;
 
-
-
         // Start the chase and go towards the target
         if (CanSeeTarget())
         {
@@ -81,8 +76,13 @@ public class EntityVision : MonoBehaviour
             // now start patrolling
             if (!_agent.pathPending && _agent.remainingDistance < 0.5f)
             {
+                // set (next patrol point to be the nearest point and then go to it)
+                _currentPatrolIndex = NearestPatrolPointIndex(transform.position);
+                _agent.SetDestination(patrolPath.GetPoint(_currentPatrolIndex).position);
+
+
                 _state = State.Patrol;
-                GoToNextPatrolPoint();
+                Patrol();
             }
         }
 
@@ -90,6 +90,7 @@ public class EntityVision : MonoBehaviour
         else
         {
             _state = State.Patrol;
+
             Patrol();
         }
     }
@@ -115,6 +116,38 @@ public class EntityVision : MonoBehaviour
         }
     }
 
+    // Searches a specified area
+    // Checks around nearby corners
+    // Checks nearby hiding spots
+    void SearchArea()
+    {
+        
+
+    
+    }
+
+    int NearestPatrolPointIndex(Vector3 position)
+    {
+        if (patrolPath == null || patrolPath.PointCount == 0)
+        return -1;
+
+        int nearestIndex = 0;
+        float nearestDistance = float.MaxValue;
+
+        for (int i = 0; i < patrolPath.PointCount; i++)
+        {
+            float distance = Vector3.Distance(position, patrolPath.GetPoint(i).position);
+
+            if (distance < nearestDistance)
+            {
+                nearestDistance = distance;
+                nearestIndex = i;
+            }
+        }
+
+        return nearestIndex;        
+    }
+    
     // Sets the next patrol point based off the given PatrolPath
     void GoToNextPatrolPoint()
     {
