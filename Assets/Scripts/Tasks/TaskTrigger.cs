@@ -3,12 +3,11 @@ using UnityEngine;
 public class TaskTrigger : MonoBehaviour
 {
     public TaskData taskToComplete;
-    public bool triggerOnce = true;
     private bool triggered = false;
     
     public void CompleteThisTask() 
     {
-        if (triggerOnce && triggered) return;
+        if (triggered) return;
         
         triggered = true;
         
