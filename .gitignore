@@ -97,3 +97,22 @@ InitTestScene*.unity*
 
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
+
+# Mac system files
+.DS_Store
+**/.DS_Store
+
+# Unity Editor UI Schema files
+UIElementsSchema/
+**/UIElementsSchema/
+
+# Unity Performance Test files
+**/PerformanceTestRunInfo.json
+**/PerformanceTestRunSettings.json
+
+# IDE specific
+.idea/
+.vscode/
+
+# Unity package temp files
+/Packages/packages-lock.json

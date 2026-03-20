@@ -1,46 +1,47 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.XR;
-using System.Collections.Generic;
+using XRDevice = UnityEngine.XR.InputDevice;
+using XRCommon = UnityEngine.XR.CommonUsages;
 
-public class VRTaskMenuToggle : MonoBehaviour
+public class SimpleMenuToggle : MonoBehaviour
 {
     private Canvas canvas;
+    private XRDevice leftController;
+    private XRDevice rightController;
     
     void Awake()
     {
         canvas = GetComponent<Canvas>();
     }
     
-    void Update()
+    void Start()
     {
-        // secondary button
-        if (CheckSecondaryButton())
-        {
-            ToggleMenu();
-        }
-        
-        // Simulator support
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            ToggleMenu();
-        }
+        leftController = InputDevices.GetDeviceAtXRNode(XRNode.LeftHand);
+        rightController = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
     }
     
-    bool CheckSecondaryButton()
+    void Update()
     {
-        List<InputDevice> devices = new List<InputDevice>();
-        InputDevices.GetDevices(devices);
-        
-        foreach (InputDevice device in devices)
+        if (leftController.isValid && 
+            leftController.TryGetFeatureValue(XRCommon.menuButton, out bool menuPressed) && 
+            menuPressed)
         {
-            if (device.TryGetFeatureValue(CommonUsages.secondaryButton, out bool sec) && sec)
-                return true;
+            ToggleMenu();
         }
-        return false;
+        
+        if (Keyboard.current != null && Keyboard.current.digit2Key.wasPressedThisFrame)
+        {
+            ToggleMenu();
+        }
     }
     
     void ToggleMenu()
     {
-        canvas.enabled = !canvas.enabled;
+        if (canvas != null)
+        {
+            canvas.enabled = !canvas.enabled;
+            Debug.Log($"Menu toggled: {canvas.enabled}");
+        }
     }
 }

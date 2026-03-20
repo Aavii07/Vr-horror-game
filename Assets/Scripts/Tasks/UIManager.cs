@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using System.Collections.Generic;
 
 public class UIManager : MonoBehaviour 
@@ -28,7 +29,6 @@ public class UIManager : MonoBehaviour
     
     public void RefreshChecklist(TaskData[] updatedTasks)
     {
-        // Clear existing toggles
         foreach (Transform child in checklistParent) 
             Destroy(child.gameObject);
         
@@ -40,7 +40,6 @@ public class UIManager : MonoBehaviour
             return;
         }
         
-        // Recreate with updated tasks
         foreach(TaskData task in updatedTasks) 
         {
             GameObject toggleObj = Instantiate(togglePrefab, checklistParent);
@@ -49,9 +48,15 @@ public class UIManager : MonoBehaviour
             Transform nameTransform = toggle.transform.Find("TaskName");
             if (nameTransform != null)
             {
-                Text nameText = nameTransform.GetComponent<Text>();
-                if (nameText != null)
-                    nameText.text = task.taskName;
+                TextMeshProUGUI tmpText = nameTransform.GetComponent<TextMeshProUGUI>();
+                if (tmpText != null)
+                    tmpText.text = task.taskName;
+                else
+                {
+                    Text regularText = nameTransform.GetComponent<Text>();
+                    if (regularText != null)
+                        regularText.text = task.taskName;
+                }
             }
             
             toggle.isOn = task.completed;
@@ -83,9 +88,15 @@ public class UIManager : MonoBehaviour
             Transform nameTransform = toggle.transform.Find("TaskName");
             if (nameTransform != null)
             {
-                Text nameText = nameTransform.GetComponent<Text>();
-                if (nameText != null)
-                    nameText.text = task.taskName;
+                TextMeshProUGUI tmpText = nameTransform.GetComponent<TextMeshProUGUI>();
+                if (tmpText != null)
+                    tmpText.text = task.taskName;
+                else
+                {
+                    Text regularText = nameTransform.GetComponent<Text>();
+                    if (regularText != null)
+                        regularText.text = task.taskName;
+                }
             }
             
             toggle.isOn = task.completed;
