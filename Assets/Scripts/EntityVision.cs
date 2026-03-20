@@ -18,6 +18,11 @@ public class EntityVision : MonoBehaviour
     [SerializeField] private PatrolPath patrolPath;
     [SerializeField] private float patrolWaitTime = 2f;
 
+    [Header("Search")]
+    [SerializeField] private float searchRadius = 5f;
+    [SerializeField] private int locationsToCheckUpper = 5;
+    [SerializeField] private int locationsToCheckLower = 2;
+
 
     private NavMeshAgent _agent;
     private Vector3 _lastKnownPosition;
@@ -31,7 +36,7 @@ public class EntityVision : MonoBehaviour
     // Patrol: default state. Follows the path that has been designated by the Patrol points 
     // Chasing: seen the player and now is following them
     // Investigating: Lost sight of the player so now is going to the last known location
-    private enum State { Patrol, Chasing, Investigating }
+    private enum State { Patrol, Chasing, Investigating, Searching }
     private State _state = State.Patrol;
 
     void Start()
@@ -44,6 +49,7 @@ public class EntityVision : MonoBehaviour
             _agent.SetDestination(patrolPath.GetPoint(0).position);
         }
     }
+
 
     void Update()
     {
@@ -90,7 +96,6 @@ public class EntityVision : MonoBehaviour
         else
         {
             _state = State.Patrol;
-
             Patrol();
         }
     }
