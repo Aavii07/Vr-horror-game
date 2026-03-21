@@ -1334,6 +1334,9 @@ MonoBehaviour:
   rotationSpeed: 6
   patrolPath: {fileID: 437841668}
   patrolWaitTime: 2
+  searchRadius: 5
+  locationsToCheckUpper: 5
+  locationsToCheckLower: 2
 --- !u!1 &1497574246
 GameObject:
   m_ObjectHideFlags: 0
