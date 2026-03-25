@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54c546d4013c44e42ab0d2b792c3a0ff, type: 3}
   m_Name: Task_StayInArea
   m_EditorClassIdentifier: Assembly-CSharp::TaskData
-  taskName: Stay in the area (incomplete)
+  taskName: Reached the staircase entrance
   completed: 0

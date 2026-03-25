@@ -21373,6 +21373,11 @@ PrefabInstance:
       addedObject: {fileID: 985604563}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 070fcf73e7955413bbf1d0482d1bfc59, type: 3}
+--- !u!4 &1220526966 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6296934184075639237, guid: 070fcf73e7955413bbf1d0482d1bfc59, type: 3}
+  m_PrefabInstance: {fileID: 1220526965}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1223356318
 GameObject:
   m_ObjectHideFlags: 0
@@ -26296,6 +26301,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 118420, guid: 496fa247adc61d44ebaeaf9d72671287, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1529256460}
+    - targetCorrespondingSourceObject: {fileID: 129374, guid: 496fa247adc61d44ebaeaf9d72671287, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1529256463}
+    - targetCorrespondingSourceObject: {fileID: 129374, guid: 496fa247adc61d44ebaeaf9d72671287, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1529256462}
   m_SourcePrefab: {fileID: 100100000, guid: 496fa247adc61d44ebaeaf9d72671287, type: 3}
 --- !u!4 &1529256458 stripped
 Transform:
@@ -26336,6 +26347,41 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!1 &1529256461 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 129374, guid: 496fa247adc61d44ebaeaf9d72671287, type: 3}
+  m_PrefabInstance: {fileID: 1529256457}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1529256462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1529256461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a547e0229dd0943c9bcbf2a9dce27ae2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TaskTrigger
+  taskToComplete: {fileID: 11400000, guid: 6da29fcef3c794ade8d27fc5a1df2a8a, type: 2}
+--- !u!114 &1529256463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1529256461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09eb6474aab6d014e8f1dd97aa9e3a5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LookAtTask
+  taskTrigger: {fileID: 1529256462}
+  playerCamera: {fileID: 1220526966}
+  requiredLookTime: 4
+  requiredDistance: 3
+  lookDotThreshold: 0.9
 --- !u!1 &1547570895
 GameObject:
   m_ObjectHideFlags: 0
@@ -32006,6 +32052,88 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1855271225}
   m_Mesh: {fileID: 4300000, guid: 9d05b15ebc07ee144a18b52300023b0b, type: 3}
+--- !u!1 &1855682586
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1855682588}
+  - component: {fileID: 1855682587}
+  - component: {fileID: 1855682590}
+  - component: {fileID: 1855682589}
+  m_Layer: 0
+  m_Name: StayZone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &1855682587
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1855682586}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1855682588
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1855682586}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4, y: 1, z: 8.41}
+  m_LocalScale: {x: 3, y: 2, z: 3}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1855682589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1855682586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a547e0229dd0943c9bcbf2a9dce27ae2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TaskTrigger
+  taskToComplete: {fileID: 11400000, guid: 02f4200edb4054b4b8b004b1cf018b36, type: 2}
+--- !u!114 &1855682590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1855682586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62316385cbbeb4b4a9561445a52785da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StayInAreaTask
+  taskTrigger: {fileID: 1855682589}
+  requiredStayTime: 1
 --- !u!1001 &1859287135
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37269,3 +37397,4 @@ SceneRoots:
   - {fileID: 2091455461}
   - {fileID: 856434688}
   - {fileID: 47051000}
+  - {fileID: 1855682588}
