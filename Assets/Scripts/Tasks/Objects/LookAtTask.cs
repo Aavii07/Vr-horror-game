@@ -29,8 +29,10 @@ public class LookAtTask : MonoBehaviour
 
             if (lookTimer >= requiredLookTime)
             {
-                taskCompleted = true;
-                taskTrigger.CompleteThisTask();
+                if (taskTrigger.CompleteThisTask())
+                    taskCompleted = true;
+                else
+                    lookTimer = 0f; // Reset timer so player can try again once task cycles into UI
             }
         }
         else

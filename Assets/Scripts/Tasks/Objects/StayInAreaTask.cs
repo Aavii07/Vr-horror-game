@@ -19,8 +19,10 @@ public class StayInAreaTask : MonoBehaviour
 
             if (stayTimer >= requiredStayTime)
             {
-                taskCompleted = true;
-                taskTrigger.CompleteThisTask();
+                if (taskTrigger.CompleteThisTask())
+                    taskCompleted = true;
+                else
+                    stayTimer = 0f;
             }
         }
     }

@@ -45,6 +45,12 @@ public class TaskManager : MonoBehaviour
             return;
         }
 
+        // Reset all tasks
+        foreach (TaskData task in allAvailableTasks) 
+        {
+            task.completed = false;
+        }
+
         SelectRandomTasks(numberOfTasks);
     }
     
@@ -75,7 +81,6 @@ public class TaskManager : MonoBehaviour
             completedTask.completed = true;
             UIManager.Instance?.MarkComplete(completedTask);
             
-            // Start the process to replace this task
             StartCoroutine(ReplaceTaskAfterDelay(completedTask, taskCompletionDeleteDelay));
         }
     }
@@ -94,8 +99,12 @@ public class TaskManager : MonoBehaviour
             {
                 if (currentTasks[i] == completedTask)
                 {
-                    updatedTasks.Add(newTask);
                     newTask.completed = false;
+                    updatedTasks.Add(newTask);
+
+                    TaskTrigger trigger = FindTaskTriggerFor(newTask);
+                    if (trigger != null && trigger.IsAlreadyComplete())
+                        StartCoroutine(AutoCompleteNewTask(newTask));
                 }
                 else
                 {
@@ -149,6 +158,27 @@ public class TaskManager : MonoBehaviour
             
         int randomIndex = Random.Range(0, availableTasks.Count);
         return availableTasks[randomIndex];
+    }
+
+    public bool IsTaskActive(TaskData task)
+    {
+        return System.Array.Exists(currentTasks, t => t == task);
+    }
+
+    TaskTrigger FindTaskTriggerFor(TaskData task)
+    {
+        foreach (TaskTrigger trigger in FindObjectsOfType<TaskTrigger>())
+        {
+            if (trigger.taskToComplete == task)
+                return trigger;
+        }
+        return null;
+    }
+
+    System.Collections.IEnumerator AutoCompleteNewTask(TaskData task)
+    {
+        yield return null;
+        CompleteTask(task);
     }
     
     public void ResetAllTasks()

@@ -19,11 +19,7 @@ public class UIManager : MonoBehaviour
 
     public void OnTasksLoaded(TaskData[] loadedTasks)
     {
-        if (loadedTasks == null || loadedTasks.Length == 0) return;
-        
-        foreach (TaskData task in loadedTasks)
-            task.completed = false;
-        
+        if (loadedTasks == null || loadedTasks.Length == 0) return;     
         CreateChecklist(new List<TaskData>(loadedTasks));
     }
     

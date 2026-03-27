@@ -1,11 +1,10 @@
 using UnityEngine;
 
-public class DoorTask : MonoBehaviour
+public class DoorTask : TaskTrigger
 {
-    public TaskTrigger taskTrigger;
     public float completionAngle = 45f;
     public bool checkOppositeDirection = false;
-    
+
     private HingeJoint hingeJoint;
     private bool taskCompleted = false;
 
@@ -17,18 +16,23 @@ public class DoorTask : MonoBehaviour
     void Update()
     {
         if (taskCompleted || hingeJoint == null) return;
-        
+
         float currentAngle = hingeJoint.angle;
         float checkAngle = checkOppositeDirection ? Mathf.Abs(currentAngle) : currentAngle;
-        
+
         if (checkAngle >= completionAngle)
         {
             taskCompleted = true;
-            
-            if (taskTrigger != null)
-            {
-                taskTrigger.CompleteThisTask();
-            }
+            CompleteThisTask();
         }
+    }
+
+    public override bool IsAlreadyComplete()
+    {
+        if (hingeJoint == null)
+            hingeJoint = GetComponent<HingeJoint>();
+
+        float checkAngle = checkOppositeDirection ? Mathf.Abs(hingeJoint.angle) : hingeJoint.angle;
+        return checkAngle >= completionAngle;
     }
 }
