@@ -18,7 +18,7 @@ public class EntityVision : MonoBehaviour
 
     [Header("Patrol")]
     [SerializeField] private PatrolPath patrolPath;
-    [SerializeField] private float patrolWaitTime = 2f;
+    [SerializeField] private float patrolWaitTime = 25f;
 
     [Header("Search")]
     [SerializeField] private float searchRadius = 5f;
@@ -120,7 +120,15 @@ public class EntityVision : MonoBehaviour
         switch (_state)
         {
             case State.Patrol:
-                _animator.SetBool(IsMovingParam, true);
+
+                if(_patrolWaitTimer > 0)
+                {
+                   _animator.SetBool(IsMovingParam, false); 
+                }
+                else
+                {
+                    _animator.SetBool(IsMovingParam, true);
+                }
                 break;
 
             case State.Chasing:
