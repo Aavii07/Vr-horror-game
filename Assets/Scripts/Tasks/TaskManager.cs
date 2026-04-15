@@ -13,7 +13,10 @@ public class TaskManager : MonoBehaviour
     
     [Header("Current Tasks")]
     public TaskData[] currentTasks;
-    
+
+    [Header("Priority Task")]
+    public TaskData priorityTask; // the collect green Cube task will always be loaded in for the tutorial
+
     private TaskData[] allAvailableTasks;
 
     void Awake()
@@ -58,11 +61,21 @@ public class TaskManager : MonoBehaviour
     {
         List<TaskData> available = new List<TaskData>(allAvailableTasks);
         List<TaskData> selected = new List<TaskData>();
+
+        // Add tutorial task first
+        bool hasPriority = false;
+        if (priorityTask != null && available.Contains(priorityTask))
+        {
+            selected.Add(priorityTask);
+            available.Remove(priorityTask);
+            hasPriority = true;
+        }
         
-        for (int i = 0; i < count; i++)
+        int remainingSlots = count - selected.Count;
+        for (int i = 0; i < remainingSlots; i++)
         {
             if (available.Count == 0) break;
-            
+
             int randomIndex = Random.Range(0, available.Count);
             selected.Add(available[randomIndex]);
             available.RemoveAt(randomIndex);
