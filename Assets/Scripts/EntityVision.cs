@@ -18,13 +18,17 @@ public class EntityVision : MonoBehaviour
 
     [Header("Patrol")]
     [SerializeField] private PatrolPath patrolPath;
-    [SerializeField] private float patrolWaitTime = 25f;
+    [SerializeField] private float patrolWaitTime = 25;
 
     [Header("Search")]
     [SerializeField] private float searchRadius = 5f;
     [SerializeField] private int locationsToCheckUpper = 5;
     [SerializeField] private int locationsToCheckLower = 2;
     [SerializeField] private float searchDuration = 4f;
+
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip walkingSound;
 
 
     private NavMeshAgent _agent;
@@ -68,9 +72,8 @@ public class EntityVision : MonoBehaviour
         }
 
         // Just lost sight of target go to last known position
-        else if (_state == State.Chasing)
+        else if (_state == State.Chasing && !CanSeeTarget())
         {
-
             _state = State.Investigating;
             _agent.speed = patrolSpeed;
             _agent.SetDestination(_lastKnownPosition);
@@ -84,7 +87,9 @@ public class EntityVision : MonoBehaviour
             if (!_agent.pathPending && _agent.remainingDistance < 0.5f)
             {
                 // Reached last known position — begin searching the area
-                _state = State.Searching;
+                _state = State.Patrol;
+                _currentPatrolIndex = NearestPatrolPointIndex(transform.position);
+                _agent.SetDestination(patrolPath.GetPoint(_currentPatrolIndex).position);
                 _searchTimer = searchDuration;
                 _agent.ResetPath();
             }
@@ -93,7 +98,7 @@ public class EntityVision : MonoBehaviour
         else if (_state == State.Searching)
         {
             _searchTimer -= Time.deltaTime;
-            SearchArea();
+           // SearchArea();
 
             if (_searchTimer <= 0f)
             {
@@ -113,6 +118,7 @@ public class EntityVision : MonoBehaviour
         }
 
         UpdateAnimations();
+        HandleWalkingAudio();
     }
 
     void UpdateAnimations()
@@ -249,6 +255,30 @@ public class EntityVision : MonoBehaviour
 
         return true;
     }
+
+    void HandleWalkingAudio()
+{
+    if (audioSource == null || walkingSound == null) return;
+
+    bool isMoving = !_agent.pathPending && _agent.remainingDistance > 0.2f;
+
+    if (isMoving)
+    {
+        if (!audioSource.isPlaying)
+        {
+            audioSource.clip = walkingSound;
+            audioSource.loop = true;
+            audioSource.Play();
+        }
+    }
+    else
+    {
+        if (audioSource.isPlaying)
+        {
+            audioSource.Stop();
+        }
+    }
+}
 
     void OnDrawGizmos()
     {
