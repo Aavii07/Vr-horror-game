@@ -2,22 +2,37 @@ using UnityEngine;
 
 public class TaskTrigger : MonoBehaviour
 {
+    [Header("Audio")]
+    public AudioClip taskCompleteSound;
+    [Range(0f, 1f)]
+    public float volume = 0.7f;
+
     public TaskData taskToComplete;
     private bool triggered = false;
     
     // This is bool because we need to know if the task was in the UI (and should be completed) or should be ignored
     public bool CompleteThisTask() 
     {
-        //Debug.Log("CompleteThisTask called, triggered: " + triggered);
         if (triggered) return false;
         
         TaskManager tm = TaskManager.Instance;
         if (tm != null && taskToComplete != null) 
         {
-            //Debug.Log("Current active tasks: " + string.Join(", ", System.Array.ConvertAll(tm.currentTasks, t => t.taskName)));
             if (tm.IsTaskActive(taskToComplete))
             {
                 triggered = true;
+
+                if (taskCompleteSound != null)
+                {
+                    // Create a temporary GameObject to play sound (more reliable)
+                    GameObject soundObject = new GameObject("TempSound");
+                    AudioSource audioSource = soundObject.AddComponent<AudioSource>();
+                    audioSource.clip = taskCompleteSound;
+                    audioSource.volume = volume;
+                    audioSource.Play();
+                    Destroy(soundObject, taskCompleteSound.length);
+                }
+
                 tm.CompleteTask(taskToComplete);
                 return true;
             }

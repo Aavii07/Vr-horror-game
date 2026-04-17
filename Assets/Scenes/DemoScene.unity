@@ -9371,6 +9371,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75fe2dd0291ad49a6a529ac4f1d7f5f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemCollectable
+  taskCompleteSound: {fileID: 8300000, guid: 6ec5f56805bbb4644ad74d428a6f6dd0, type: 3}
+  volume: 0.7
   taskToComplete: {fileID: 11400000, guid: f12f7c4dc276b4872a578304f8482e34, type: 2}
 --- !u!114 &511952373
 MonoBehaviour:
@@ -18899,6 +18901,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75fe2dd0291ad49a6a529ac4f1d7f5f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemCollectable
+  taskCompleteSound: {fileID: 8300000, guid: 6ec5f56805bbb4644ad74d428a6f6dd0, type: 3}
+  volume: 0.7
   taskToComplete: {fileID: 11400000, guid: 7dc6977d37a204b75a0536e30f3d6b6f, type: 2}
 --- !u!114 &977373377
 MonoBehaviour:
@@ -20631,6 +20635,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a547e0229dd0943c9bcbf2a9dce27ae2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TaskTrigger
+  taskCompleteSound: {fileID: 0}
+  volume: 0.7
   taskToComplete: {fileID: 11400000, guid: ab863ec83e3c0490494409632bde3913, type: 2}
 --- !u!114 &1066776922
 MonoBehaviour:
@@ -25213,6 +25219,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75fe2dd0291ad49a6a529ac4f1d7f5f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemCollectable
+  taskCompleteSound: {fileID: 8300000, guid: 6ec5f56805bbb4644ad74d428a6f6dd0, type: 3}
+  volume: 0.7
   taskToComplete: {fileID: 11400000, guid: 580adaf84ea234ee98a7a6e58ebf81b5, type: 2}
 --- !u!114 &1243440430
 MonoBehaviour:
@@ -26590,6 +26598,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75fe2dd0291ad49a6a529ac4f1d7f5f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemCollectable
+  taskCompleteSound: {fileID: 8300000, guid: 6ec5f56805bbb4644ad74d428a6f6dd0, type: 3}
+  volume: 0.7
   taskToComplete: {fileID: 11400000, guid: af254d829061e4fed8b46e8ff1446991, type: 2}
 --- !u!114 &1307202058
 MonoBehaviour:
@@ -30702,6 +30712,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75fe2dd0291ad49a6a529ac4f1d7f5f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemCollectable
+  taskCompleteSound: {fileID: 8300000, guid: 6ec5f56805bbb4644ad74d428a6f6dd0, type: 3}
+  volume: 0.7
   taskToComplete: {fileID: 11400000, guid: 8283b28432c5245a3ba416aaf9c5e6b1, type: 2}
 --- !u!114 &1522479718
 MonoBehaviour:
@@ -31418,6 +31430,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a547e0229dd0943c9bcbf2a9dce27ae2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TaskTrigger
+  taskCompleteSound: {fileID: 0}
+  volume: 0.7
   taskToComplete: {fileID: 11400000, guid: 6da29fcef3c794ade8d27fc5a1df2a8a, type: 2}
 --- !u!114 &1529256463
 MonoBehaviour:
@@ -34636,6 +34650,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75fe2dd0291ad49a6a529ac4f1d7f5f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemCollectable
+  taskCompleteSound: {fileID: 8300000, guid: 6ec5f56805bbb4644ad74d428a6f6dd0, type: 3}
+  volume: 0.7
   taskToComplete: {fileID: 11400000, guid: e1a333a9041244023be3a0d66b84a616, type: 2}
 --- !u!114 &1692694746
 MonoBehaviour:
@@ -35874,6 +35890,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75fe2dd0291ad49a6a529ac4f1d7f5f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemCollectable
+  taskCompleteSound: {fileID: 8300000, guid: 6ec5f56805bbb4644ad74d428a6f6dd0, type: 3}
+  volume: 0.7
   taskToComplete: {fileID: 11400000, guid: 7e2f765abbda04e3fab63db675495f3e, type: 2}
 --- !u!114 &1736341523
 MonoBehaviour:
@@ -38566,6 +38584,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a547e0229dd0943c9bcbf2a9dce27ae2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TaskTrigger
+  taskCompleteSound: {fileID: 0}
+  volume: 0.7
   taskToComplete: {fileID: 11400000, guid: 02f4200edb4054b4b8b004b1cf018b36, type: 2}
 --- !u!114 &1855682590
 MonoBehaviour:
@@ -38991,6 +39011,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75fe2dd0291ad49a6a529ac4f1d7f5f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemCollectable
+  taskCompleteSound: {fileID: 8300000, guid: 6ec5f56805bbb4644ad74d428a6f6dd0, type: 3}
+  volume: 0.7
   taskToComplete: {fileID: 11400000, guid: 83c0799d929ee4c84b77eeca2ffe6e8f, type: 2}
 --- !u!114 &1875901345
 MonoBehaviour:
@@ -39515,6 +39537,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75fe2dd0291ad49a6a529ac4f1d7f5f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemCollectable
+  taskCompleteSound: {fileID: 8300000, guid: 6ec5f56805bbb4644ad74d428a6f6dd0, type: 3}
+  volume: 0.7
   taskToComplete: {fileID: 11400000, guid: f573680cd36ef42aca26996c656456b0, type: 2}
 --- !u!114 &1890162733
 MonoBehaviour:
@@ -43360,6 +43384,30 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 65454027146353324, guid: cedd618127b805642a87763c075e971b, type: 3}
+      propertyPath: m_Size.x
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 65454027146353324, guid: cedd618127b805642a87763c075e971b, type: 3}
+      propertyPath: m_Size.y
+      value: 0.057
+      objectReference: {fileID: 0}
+    - target: {fileID: 65454027146353324, guid: cedd618127b805642a87763c075e971b, type: 3}
+      propertyPath: m_Size.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 65454027146353324, guid: cedd618127b805642a87763c075e971b, type: 3}
+      propertyPath: m_Center.x
+      value: -0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 65454027146353324, guid: cedd618127b805642a87763c075e971b, type: 3}
+      propertyPath: m_Center.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 65454027146353324, guid: cedd618127b805642a87763c075e971b, type: 3}
+      propertyPath: m_Center.z
+      value: -0.05
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -43556,6 +43604,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75fe2dd0291ad49a6a529ac4f1d7f5f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemCollectable
+  taskCompleteSound: {fileID: 8300000, guid: 6ec5f56805bbb4644ad74d428a6f6dd0, type: 3}
+  volume: 0.7
   taskToComplete: {fileID: 11400000, guid: 9f3659588c88b42b5bb305df24fc66ec, type: 2}
 --- !u!114 &2087820312
 MonoBehaviour:
