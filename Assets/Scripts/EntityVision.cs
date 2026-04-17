@@ -314,6 +314,6 @@ public class EntityVision : MonoBehaviour
         }
 
 
-        UnityEditor.Handles.Label(transform.position + Vector3.up * 2.5f, _state.ToString());
+        // UnityEditor.Handles.Label(transform.position + Vector3.up * 2.5f, _state.ToString());
     }
 }

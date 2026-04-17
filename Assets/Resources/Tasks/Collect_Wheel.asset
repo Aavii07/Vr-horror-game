@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54c546d4013c44e42ab0d2b792c3a0ff, type: 3}
-  m_Name: Collect_Green_Cube
+  m_Name: Collect_Wheel
   m_EditorClassIdentifier: Assembly-CSharp::TaskData
-  taskName: Collect the green cube in the tutorial area
+  taskName: Collect a Wheel (tutorial area)
   completed: 0
