@@ -9119,15 +9119,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4475998360808636, guid: abceb10e9c1c8504eb85132ddc32f9e7, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4475998360808636, guid: abceb10e9c1c8504eb85132ddc32f9e7, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4475998360808636, guid: abceb10e9c1c8504eb85132ddc32f9e7, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4475998360808636, guid: abceb10e9c1c8504eb85132ddc32f9e7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9189,6 +9189,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1255541323958728, guid: abceb10e9c1c8504eb85132ddc32f9e7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 511952372}
+    - targetCorrespondingSourceObject: {fileID: 1255541323958728, guid: abceb10e9c1c8504eb85132ddc32f9e7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 511952373}
   m_SourcePrefab: {fileID: 100100000, guid: abceb10e9c1c8504eb85132ddc32f9e7, type: 3}
 --- !u!4 &511952368 stripped
 Transform:
@@ -9369,6 +9372,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemCollectable
   taskToComplete: {fileID: 11400000, guid: f12f7c4dc276b4872a578304f8482e34, type: 2}
+--- !u!114 &511952373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 511952369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d98dbca1867874bed8a3eb8a8d67958c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TaskObjectGlow
+  associatedTask: {fileID: 11400000, guid: f12f7c4dc276b4872a578304f8482e34, type: 2}
+  lightColor: {r: 1, g: 0, b: 0, a: 1}
+  lightIntensity: 2
+  lightRange: 3
 --- !u!1001 &513023050
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18698,6 +18717,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1339757149798516, guid: f3de6c932859d8940b5ba1d50fb8035b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 977373376}
+    - targetCorrespondingSourceObject: {fileID: 1339757149798516, guid: f3de6c932859d8940b5ba1d50fb8035b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 977373377}
   m_SourcePrefab: {fileID: 100100000, guid: f3de6c932859d8940b5ba1d50fb8035b, type: 3}
 --- !u!4 &977373369 stripped
 Transform:
@@ -18878,6 +18900,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemCollectable
   taskToComplete: {fileID: 11400000, guid: 7dc6977d37a204b75a0536e30f3d6b6f, type: 2}
+--- !u!114 &977373377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977373370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d98dbca1867874bed8a3eb8a8d67958c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TaskObjectGlow
+  associatedTask: {fileID: 11400000, guid: 7dc6977d37a204b75a0536e30f3d6b6f, type: 2}
+  lightColor: {r: 1, g: 0, b: 0, a: 1}
+  lightIntensity: 2
+  lightRange: 3
 --- !u!1 &983890792
 GameObject:
   m_ObjectHideFlags: 0
@@ -21426,7 +21464,7 @@ Transform:
   m_GameObject: {fileID: 1084026081}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0542, y: 0.0037, z: -0.1132}
+  m_LocalPosition: {x: -0.0542, y: 0.0037, z: 0.1289}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -25332,6 +25370,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1243440432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243440424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d98dbca1867874bed8a3eb8a8d67958c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TaskObjectGlow
+  associatedTask: {fileID: 11400000, guid: 580adaf84ea234ee98a7a6e58ebf81b5, type: 2}
+  lightColor: {r: 1, g: 0, b: 0, a: 1}
+  lightIntensity: 2
+  lightRange: 3
 --- !u!1001 &1254510021
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26354,6 +26408,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1664989765304232, guid: 75399c915872efb43ac59982ec88d12a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1307202057}
+    - targetCorrespondingSourceObject: {fileID: 1664989765304232, guid: 75399c915872efb43ac59982ec88d12a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1307202058}
   m_SourcePrefab: {fileID: 100100000, guid: 75399c915872efb43ac59982ec88d12a, type: 3}
 --- !u!4 &1307202050 stripped
 Transform:
@@ -26534,6 +26591,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemCollectable
   taskToComplete: {fileID: 11400000, guid: af254d829061e4fed8b46e8ff1446991, type: 2}
+--- !u!114 &1307202058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1307202051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d98dbca1867874bed8a3eb8a8d67958c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TaskObjectGlow
+  associatedTask: {fileID: 11400000, guid: af254d829061e4fed8b46e8ff1446991, type: 2}
+  lightColor: {r: 1, g: 0, b: 0, a: 1}
+  lightIntensity: 2
+  lightRange: 3
 --- !u!1001 &1312187918
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30447,6 +30520,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1509186335040420, guid: e6d09f7bafade7b4c8b283d037f37cf6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1522479717}
+    - targetCorrespondingSourceObject: {fileID: 1509186335040420, guid: e6d09f7bafade7b4c8b283d037f37cf6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1522479718}
   m_SourcePrefab: {fileID: 100100000, guid: e6d09f7bafade7b4c8b283d037f37cf6, type: 3}
 --- !u!4 &1522479712 stripped
 Transform:
@@ -30627,6 +30703,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemCollectable
   taskToComplete: {fileID: 11400000, guid: 8283b28432c5245a3ba416aaf9c5e6b1, type: 2}
+--- !u!114 &1522479718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522479713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d98dbca1867874bed8a3eb8a8d67958c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TaskObjectGlow
+  associatedTask: {fileID: 11400000, guid: 8283b28432c5245a3ba416aaf9c5e6b1, type: 2}
+  lightColor: {r: 1, g: 0, b: 0, a: 1}
+  lightIntensity: 2
+  lightRange: 3
 --- !u!1 &1524997038
 GameObject:
   m_ObjectHideFlags: 0
@@ -34279,6 +34371,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1179546363165374, guid: 7d9bdc9846740b74cacf169d3e13cd3f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1243440429}
+    - targetCorrespondingSourceObject: {fileID: 1179546363165374, guid: 7d9bdc9846740b74cacf169d3e13cd3f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1243440432}
   m_SourcePrefab: {fileID: 100100000, guid: 7d9bdc9846740b74cacf169d3e13cd3f, type: 3}
 --- !u!1001 &1692694740
 PrefabInstance:
@@ -34364,6 +34459,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1414328216076536, guid: 0efd7d60d3f9393439fd3ad9d081d35c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1692694745}
+    - targetCorrespondingSourceObject: {fileID: 1414328216076536, guid: 0efd7d60d3f9393439fd3ad9d081d35c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1692694746}
   m_SourcePrefab: {fileID: 100100000, guid: 0efd7d60d3f9393439fd3ad9d081d35c, type: 3}
 --- !u!4 &1692694741 stripped
 Transform:
@@ -34539,6 +34637,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemCollectable
   taskToComplete: {fileID: 11400000, guid: e1a333a9041244023be3a0d66b84a616, type: 2}
+--- !u!114 &1692694746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 205617370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d98dbca1867874bed8a3eb8a8d67958c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TaskObjectGlow
+  associatedTask: {fileID: 11400000, guid: e1a333a9041244023be3a0d66b84a616, type: 2}
+  lightColor: {r: 1, g: 0, b: 0, a: 1}
+  lightIntensity: 2
+  lightRange: 3
 --- !u!1 &1697978195
 GameObject:
   m_ObjectHideFlags: 0
@@ -35066,7 +35180,7 @@ Transform:
   m_GameObject: {fileID: 1720065646}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0542, y: 0.0037, z: -0.5087}
+  m_LocalPosition: {x: -0.0542, y: 0.0037, z: -0.2606}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -35573,6 +35687,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1465378941161770, guid: a82c9607033fc2c4e87b8cba7d94d616, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1736341522}
+    - targetCorrespondingSourceObject: {fileID: 1465378941161770, guid: a82c9607033fc2c4e87b8cba7d94d616, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1736341523}
   m_SourcePrefab: {fileID: 100100000, guid: a82c9607033fc2c4e87b8cba7d94d616, type: 3}
 --- !u!4 &1736341514 stripped
 Transform:
@@ -35758,6 +35875,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemCollectable
   taskToComplete: {fileID: 11400000, guid: 7e2f765abbda04e3fab63db675495f3e, type: 2}
+--- !u!114 &1736341523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1736341516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d98dbca1867874bed8a3eb8a8d67958c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TaskObjectGlow
+  associatedTask: {fileID: 11400000, guid: 7e2f765abbda04e3fab63db675495f3e, type: 2}
+  lightColor: {r: 1, g: 0, b: 0, a: 1}
+  lightIntensity: 2
+  lightRange: 3
 --- !u!1 &1736990781
 GameObject:
   m_ObjectHideFlags: 0
@@ -38671,6 +38804,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1011373775253534, guid: cac530be51fa614458a02884bfe6e5bf, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1875901344}
+    - targetCorrespondingSourceObject: {fileID: 1011373775253534, guid: cac530be51fa614458a02884bfe6e5bf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1875901345}
   m_SourcePrefab: {fileID: 100100000, guid: cac530be51fa614458a02884bfe6e5bf, type: 3}
 --- !u!4 &1875901336 stripped
 Transform:
@@ -38856,6 +38992,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemCollectable
   taskToComplete: {fileID: 11400000, guid: 83c0799d929ee4c84b77eeca2ffe6e8f, type: 2}
+--- !u!114 &1875901345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1875901338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d98dbca1867874bed8a3eb8a8d67958c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TaskObjectGlow
+  associatedTask: {fileID: 11400000, guid: 83c0799d929ee4c84b77eeca2ffe6e8f, type: 2}
+  lightColor: {r: 1, g: 0, b: 0, a: 1}
+  lightIntensity: 2
+  lightRange: 3
 --- !u!1001 &1876744111
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39160,6 +39312,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1856854601013476, guid: 8e885bf6d3dd0cb4e8c89899b98fa1ba, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1890162732}
+    - targetCorrespondingSourceObject: {fileID: 1856854601013476, guid: 8e885bf6d3dd0cb4e8c89899b98fa1ba, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1890162733}
   m_SourcePrefab: {fileID: 100100000, guid: 8e885bf6d3dd0cb4e8c89899b98fa1ba, type: 3}
 --- !u!1 &1890162724 stripped
 GameObject:
@@ -39361,6 +39516,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemCollectable
   taskToComplete: {fileID: 11400000, guid: f573680cd36ef42aca26996c656456b0, type: 2}
+--- !u!114 &1890162733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890162724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d98dbca1867874bed8a3eb8a8d67958c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TaskObjectGlow
+  associatedTask: {fileID: 11400000, guid: f573680cd36ef42aca26996c656456b0, type: 2}
+  lightColor: {r: 1, g: 0, b: 0, a: 1}
+  lightIntensity: 2
+  lightRange: 3
 --- !u!1001 &1898835132
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39528,10 +39699,11 @@ MonoBehaviour:
   messages:
   - Welcome. To begin, please bend your left wrist toward your face to view the task
     list. Press OK once you figure it out.
-  - 'These are your tasks to complete. Complete these tasks to build a rocket and
-    escape. '
-  - Many Tasks will require you to collect items by moving them onto your upper chest 
-    One of them you have right now is to collect that wheel. Collect it.
+  - These are your tasks to complete. Objects in your task list will glow bright
+    red. Complete these tasks to build a rocket and escape. Click OK to learn how
+    to collect objects.
+  - Many Tasks will require you to collect items by moving them close to your upper
+    chest. One of those objects are this very room. Collect it.
   - Be careful about the monster roaming around. This room is your only safe zone.
     Don't let it catch you.
   - Press OK to open up this room. Good luck.
@@ -43128,6 +43300,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FanBelt
       objectReference: {fileID: 0}
+    - target: {fileID: 4171933526132916, guid: cedd618127b805642a87763c075e971b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.243
+      objectReference: {fileID: 0}
     - target: {fileID: 4468701260000104, guid: cedd618127b805642a87763c075e971b, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
@@ -43203,6 +43379,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1454236067195572, guid: cedd618127b805642a87763c075e971b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2087820311}
+    - targetCorrespondingSourceObject: {fileID: 1454236067195572, guid: cedd618127b805642a87763c075e971b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2087820312}
   m_SourcePrefab: {fileID: 100100000, guid: cedd618127b805642a87763c075e971b, type: 3}
 --- !u!4 &2087820307 stripped
 Transform:
@@ -43378,6 +43557,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemCollectable
   taskToComplete: {fileID: 11400000, guid: 9f3659588c88b42b5bb305df24fc66ec, type: 2}
+--- !u!114 &2087820312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1387309294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d98dbca1867874bed8a3eb8a8d67958c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TaskObjectGlow
+  associatedTask: {fileID: 11400000, guid: 9f3659588c88b42b5bb305df24fc66ec, type: 2}
+  lightColor: {r: 1, g: 0, b: 0, a: 1}
+  lightIntensity: 2
+  lightRange: 3
 --- !u!1001 &2101047058
 PrefabInstance:
   m_ObjectHideFlags: 0

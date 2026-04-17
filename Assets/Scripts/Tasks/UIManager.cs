@@ -19,7 +19,20 @@ public class UIManager : MonoBehaviour
 
     public void OnTasksLoaded(TaskData[] loadedTasks)
     {
-        if (loadedTasks == null || loadedTasks.Length == 0) return;     
+        if (loadedTasks == null || loadedTasks.Length == 0) return;
+        
+        foreach (TaskData task in loadedTasks)
+        {
+            task.completed = false;
+        }
+        
+        DisableAllGlows();
+        
+        foreach (TaskData task in loadedTasks)
+        {
+            EnableGlowForTask(task);
+        }
+        
         CreateChecklist(new List<TaskData>(loadedTasks));
     }
     
@@ -29,6 +42,13 @@ public class UIManager : MonoBehaviour
             Destroy(child.gameObject);
         
         toggleMap.Clear();
+        
+        // Update glows based on new tasks
+        DisableAllGlows();
+        foreach (TaskData task in updatedTasks)
+        {
+            EnableGlowForTask(task);
+        }
         
         if (updatedTasks == null || updatedTasks.Length == 0)
         {
@@ -60,12 +80,36 @@ public class UIManager : MonoBehaviour
         }
     }
     
+    void DisableAllGlows()
+    {
+        TaskObjectGlow[] allGlowObjects = FindObjectsOfType<TaskObjectGlow>();
+        foreach (TaskObjectGlow glow in allGlowObjects)
+        {
+            glow.SetGlow(false);
+        }
+    }
+    
+    void EnableGlowForTask(TaskData task)
+    {
+        TaskObjectGlow[] allGlowObjects = FindObjectsOfType<TaskObjectGlow>();
+        foreach (TaskObjectGlow glow in allGlowObjects)
+        {
+            if (glow.associatedTask == task)
+            {
+                glow.SetGlow(true);
+            }
+        }
+    }
+    
     public void ClearChecklist()
     {
         foreach (Transform child in checklistParent) 
             Destroy(child.gameObject);
         
         toggleMap.Clear();
+        
+        DisableAllGlows();
+        
         Debug.Log("Checklist cleared");
     }
 
