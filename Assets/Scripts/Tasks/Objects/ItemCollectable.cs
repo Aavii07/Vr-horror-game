@@ -8,7 +8,7 @@ public class ItemCollectable : TaskTrigger
     {
         if (isCollected) return;
         
-        if (other.name == "CollectionSphere")
+        if (other.name == "CollectionSphere" || other.name == "TestingCollectionSphere")
         {
             // Check if the task is currently active in the UI before allowing collection
             if (!IsTaskActive())
