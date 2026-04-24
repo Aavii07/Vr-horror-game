@@ -5,7 +5,7 @@ public class TaskTrigger : MonoBehaviour
     [Header("Audio")]
     public AudioClip taskCompleteSound;
     [Range(0f, 1f)]
-    public float volume = 0.7f;
+    public float audioVolume = 0.7f;
 
     public TaskData taskToComplete;
     private bool triggered = false;
@@ -28,7 +28,7 @@ public class TaskTrigger : MonoBehaviour
                     GameObject soundObject = new GameObject("TempSound");
                     AudioSource audioSource = soundObject.AddComponent<AudioSource>();
                     audioSource.clip = taskCompleteSound;
-                    audioSource.volume = volume;
+                    audioSource.volume = audioVolume;
                     audioSource.Play();
                     Destroy(soundObject, taskCompleteSound.length);
                 }

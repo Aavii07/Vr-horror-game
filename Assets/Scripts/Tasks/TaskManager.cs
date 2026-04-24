@@ -96,6 +96,12 @@ public class TaskManager : MonoBehaviour
             completedTask.completed = true;
             UIManager.Instance?.MarkComplete(completedTask);
 
+            if (usingFinalTasks)
+            {
+                UIManager.Instance?.RefreshChecklist(currentTasks);
+                return; // update completion but do not replace task
+            }
+
             StartCoroutine(ReplaceTaskAfterDelay(completedTask, taskCompletionDeleteDelay));
         }
     }

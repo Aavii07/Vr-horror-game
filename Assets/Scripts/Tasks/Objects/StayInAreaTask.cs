@@ -1,15 +1,14 @@
 using UnityEngine;
 
-public class StayInAreaTask : MonoBehaviour
+public class StayInAreaTask : TaskTrigger
 {
-    public TaskTrigger taskTrigger;
     public float requiredStayTime = 3f;
     private float stayTimer = 0f;
     private bool taskCompleted = false;
 
     void OnTriggerStay(Collider other)
     {
-        if (taskCompleted || taskTrigger == null)
+        if (taskCompleted)
             return;
 
         // if has the player tag
@@ -19,7 +18,7 @@ public class StayInAreaTask : MonoBehaviour
 
             if (stayTimer >= requiredStayTime)
             {
-                if (taskTrigger.CompleteThisTask())
+                if (CompleteThisTask())
                     taskCompleted = true;
                 else
                     stayTimer = 0f;
