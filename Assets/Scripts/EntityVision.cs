@@ -5,6 +5,9 @@ using UnityEngine.AI;
 [RequireComponent(typeof(Animator))]
 public class EntityVision : MonoBehaviour
 {
+
+    public static EntityVision Instance { get; private set; }
+
     [Header("Vision")]
     [SerializeField] private float sightRange = 10f;
     [SerializeField] private float fieldOfView = 90f;
@@ -171,8 +174,7 @@ public class EntityVision : MonoBehaviour
         }
     }
 
-    // FIX: SearchArea now uses locationsToCheckUpper/Lower to walk a set number
-    // of random NavMesh points within searchRadius before the timer expires.
+
     private int _searchLocationsChecked;
     private bool _searchMoving;
 
@@ -257,29 +259,38 @@ public class EntityVision : MonoBehaviour
     }
 
     void HandleWalkingAudio()
-{
-    if (audioSource == null || walkingSound == null) return;
-
-    bool isMoving = !_agent.pathPending && _agent.remainingDistance > 0.2f;
-
-    if (isMoving)
     {
-        if (!audioSource.isPlaying)
+        if (audioSource == null || walkingSound == null) return;
+
+        bool isMoving = !_agent.pathPending && _agent.remainingDistance > 0.2f;
+
+        if (isMoving)
         {
-            audioSource.clip = walkingSound;
-            audioSource.loop = true;
-            audioSource.Play();
+            if (!audioSource.isPlaying)
+            {
+                audioSource.clip = walkingSound;
+                audioSource.loop = true;
+                audioSource.Play();
+            }
+        }
+        else
+        {
+            if (audioSource.isPlaying)
+            {
+                audioSource.Stop();
+            }
         }
     }
-    else
+
+    public void PlayerCollectsItem()
     {
-        if (audioSource.isPlaying)
+        if (_state != State.Chasing)
         {
-            audioSource.Stop();
+            _state = State.Investigating;
+            _agent.speed = patrolSpeed;
+            _agent.SetDestination(target.position);
         }
     }
-}
-
     void OnDrawGizmos()
     {
         Vector3 origin = transform.position + Vector3.up * 1.5f;
