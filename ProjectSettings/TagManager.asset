@@ -14,8 +14,8 @@ TagManager:
   - Minimap
   - Spawn
   - PatrolPoint
-  - 
-  - 
+  - HeldItem
+  - PlayerInteractor
   - 
   - 
   - 

@@ -6,6 +6,8 @@ public class StayInAreaTask : TaskTrigger
     private float stayTimer = 0f;
     private bool taskCompleted = false;
 
+    public Canvas targetCanvas;
+
     void OnTriggerStay(Collider other)
     {
         if (taskCompleted)
@@ -20,6 +22,8 @@ public class StayInAreaTask : TaskTrigger
             {
                 if (CompleteThisTask())
                     taskCompleted = true;
+                    if (targetCanvas != null)
+                        targetCanvas.gameObject.SetActive(true); 
                 else
                     stayTimer = 0f;
             }
