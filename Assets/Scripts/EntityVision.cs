@@ -75,16 +75,18 @@ public class EntityVision : MonoBehaviour
         {
             _lastKnownPosition = target.position;
 
-            if (_state != State.Chasing && ScreamAudioSource != null && ScreamSound != null)
-            {
-                ScreamAudioSource.PlayOneShot(ScreamSound);
-            }
+            // if (_state != State.Chasing && ScreamAudioSource != null && ScreamSound != null)
+            // {
+            //     _agent.ResetPath();
+            //     ScreamAudioSource.clip = ScreamSound;
+            //     ScreamAudioSource.Play();
+            // }
 
 
             _state = State.Chasing;
             _agent.speed = chaseSpeed;
-            _agent.SetDestination(target.position);
-            RotateTowards(target.position);
+            _agent.SetDestination(_lastKnownPosition);
+            RotateTowards(_lastKnownPosition);
         }
 
         // Just lost sight of target go to last known position
