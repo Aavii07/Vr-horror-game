@@ -30,8 +30,14 @@ public class EntityVision : MonoBehaviour
     [SerializeField] private float searchDuration = 4f;
 
     [Header("Audio")]
-    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioSource walkingAudioSource;
+    [SerializeField] private AudioSource ScreamAudioSource;
+
     [SerializeField] private AudioClip walkingSound;
+    [SerializeField] private AudioClip ScreamSound;
+
+
+
 
 
     private NavMeshAgent _agent;
@@ -68,6 +74,13 @@ public class EntityVision : MonoBehaviour
         if (CanSeeTarget())
         {
             _lastKnownPosition = target.position;
+
+            if (_state != State.Chasing && ScreamAudioSource != null && ScreamSound != null)
+            {
+                ScreamAudioSource.PlayOneShot(ScreamSound);
+            }
+
+
             _state = State.Chasing;
             _agent.speed = chaseSpeed;
             _agent.SetDestination(target.position);
@@ -260,24 +273,24 @@ public class EntityVision : MonoBehaviour
 
     void HandleWalkingAudio()
     {
-        if (audioSource == null || walkingSound == null) return;
+        if (walkingAudioSource == null || walkingSound == null) return;
 
         bool isMoving = !_agent.pathPending && _agent.remainingDistance > 0.2f;
 
         if (isMoving)
         {
-            if (!audioSource.isPlaying)
+            if (!walkingAudioSource.isPlaying)
             {
-                audioSource.clip = walkingSound;
-                audioSource.loop = true;
-                audioSource.Play();
+                walkingAudioSource.clip = walkingSound;
+                walkingAudioSource.loop = true;
+                walkingAudioSource.Play();
             }
         }
         else
         {
-            if (audioSource.isPlaying)
+            if (walkingAudioSource.isPlaying)
             {
-                audioSource.Stop();
+                walkingAudioSource.Stop();
             }
         }
     }
