@@ -8,6 +8,9 @@ public class BoardRocket : TaskTrigger
     public GameObject thingToHide;
     public GameObject thingToShow;
 
+    public GameObject ambienceManager;
+    private AudioSource ambientAudioSource;
+
     public Transform rocketRoot;
 
     public AudioClip TakeOffSound;
@@ -21,6 +24,12 @@ public class BoardRocket : TaskTrigger
 
     private float currentSpeed;
 
+    void Start()
+    {
+        if (ambienceManager != null)
+            ambientAudioSource = ambienceManager.GetComponent<AudioSource>();
+    }
+
     public void SwitchToRocket()
     {
         playerXR.SetActive(false);
@@ -30,6 +39,9 @@ public class BoardRocket : TaskTrigger
 
         thingToHide.SetActive(false);
         thingToShow.SetActive(true);
+
+        if (ambienceManager != null)
+            ambientAudioSource.mute = true;
 
         // takeoff audio
         rocketAudio = rocketRoot.gameObject.AddComponent<AudioSource>();
