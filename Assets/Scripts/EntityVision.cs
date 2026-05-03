@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
 
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(Animator))]
@@ -55,6 +56,7 @@ public class EntityVision : MonoBehaviour
     private enum State { Patrol, Chasing, Investigating, Searching }
     private State _state = State.Patrol;
 
+    private bool _isScreaming = false;
     void Start()
     {
         _agent    = GetComponent<NavMeshAgent>();
@@ -70,23 +72,32 @@ public class EntityVision : MonoBehaviour
     {
         if (target == null) return;
 
+        if (_isScreaming)
+        {
+            UpdateAnimations();
+            HandleWalkingAudio();
+            return;
+        }
+
 
         if (CanSeeTarget())
         {
             _lastKnownPosition = target.position;
 
-            // if (_state != State.Chasing && ScreamAudioSource != null && ScreamSound != null)
-            // {
-            //     _agent.ResetPath();
-            //     ScreamAudioSource.clip = ScreamSound;
-            //     ScreamAudioSource.Play();
-            // }
-
-
-            _state = State.Chasing;
-            _agent.speed = chaseSpeed;
-            _agent.SetDestination(_lastKnownPosition);
-            RotateTowards(_lastKnownPosition);
+            if (_state != State.Chasing && !_isScreaming 
+                && ScreamAudioSource != null && ScreamSound != null)
+            {
+                Debug.Log("Triggering scream coroutine");
+                StartCoroutine(ScreamThenChase());
+            }
+            else if (!_isScreaming)
+            {
+                Debug.Log($"Chasing — speed: {_agent.speed}, pathStatus: {_agent.pathStatus}, remainingDist: {_agent.remainingDistance}");
+                _state = State.Chasing;
+                _agent.speed = chaseSpeed;
+                _agent.SetDestination(_lastKnownPosition);
+                RotateTowards(_lastKnownPosition);
+            }
         }
 
         // Just lost sight of target go to last known position
@@ -139,6 +150,26 @@ public class EntityVision : MonoBehaviour
         HandleWalkingAudio();
     }
 
+    private IEnumerator ScreamThenChase()
+    {
+        Debug.Log("ScreamThenChase START");
+        _isScreaming = true;
+        _state = State.Chasing;
+        _agent.ResetPath();
+
+        ScreamAudioSource.clip = ScreamSound;
+        ScreamAudioSource.Play();
+
+        yield return new WaitForSeconds(ScreamSound.length);
+
+        Debug.Log($"ScreamThenChase END — agent enabled: {_agent.enabled}, isOnNavMesh: {_agent.isOnNavMesh}, pathStatus: {_agent.pathStatus}");
+        
+        _isScreaming = false;
+        _agent.speed = chaseSpeed;
+        bool result = _agent.SetDestination(_lastKnownPosition);
+        Debug.Log($"SetDestination result: {result}, lastKnownPos: {_lastKnownPosition}");
+    }
+
     void UpdateAnimations()
     {
         switch (_state)
@@ -156,7 +187,15 @@ public class EntityVision : MonoBehaviour
                 break;
 
             case State.Chasing:
-                _animator.SetBool(IsMovingParam, true);
+                if (_isScreaming)
+                {
+                    _animator.SetBool(IsMovingParam, false);
+                }
+                else
+                {
+                    _animator.SetBool(IsMovingParam, true);
+                }
+                
                 break;
 
             case State.Investigating:
