@@ -17949,7 +17949,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4620b617c9f3c1b43b4a1e2136c1a3b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityVision
-  sightRange: 13
+  sightRange: 16
   fieldOfView: 100
   obstacleLayer:
     serializedVersion: 2
