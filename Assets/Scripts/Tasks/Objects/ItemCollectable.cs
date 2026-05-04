@@ -35,7 +35,7 @@ public class ItemCollectable : TaskTrigger
         CompleteThisTask();
 
         //Trigger script so monster now goes to player position
-        EntityVision.Instance?.PlayerCollectsItem();
+        //EntityVision.Instance?.PlayerCollectsItem();
         Destroy(gameObject);
     }
     
