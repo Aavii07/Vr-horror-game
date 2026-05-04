@@ -160,7 +160,7 @@ public class EntityVision : MonoBehaviour
         ScreamAudioSource.clip = ScreamSound;
         ScreamAudioSource.Play();
 
-        yield return new WaitForSeconds(1.5);
+        yield return new WaitForSeconds(2);
 
         Debug.Log($"ScreamThenChase END — agent enabled: {_agent.enabled}, isOnNavMesh: {_agent.isOnNavMesh}, pathStatus: {_agent.pathStatus}");
         
