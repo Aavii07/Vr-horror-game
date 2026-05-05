@@ -57,6 +57,7 @@ public class EntityVision : MonoBehaviour
     private State _state = State.Patrol;
 
     private bool _isScreaming = false;
+    private float screamCooldown = 5f;
     void Start()
     {
         _agent    = GetComponent<NavMeshAgent>();
@@ -70,6 +71,7 @@ public class EntityVision : MonoBehaviour
 
     void Update()
     {
+
         if (target == null) return;
 
         if (_isScreaming)
@@ -85,10 +87,11 @@ public class EntityVision : MonoBehaviour
             _lastKnownPosition = target.position;
 
             if (_state != State.Chasing && !_isScreaming 
-                && ScreamAudioSource != null && ScreamSound != null)
+                && ScreamAudioSource != null && ScreamSound != null && screamCooldown <= 0)
             {
                 Debug.Log("Triggering scream coroutine");
                 StartCoroutine(ScreamThenChase());
+
             }
             else if (!_isScreaming)
             {
@@ -148,6 +151,11 @@ public class EntityVision : MonoBehaviour
 
         UpdateAnimations();
         HandleWalkingAudio();
+
+        if(screamCooldown > 0)
+        {
+            screamCooldown -= Time.deltaTime;
+        }
     }
 
     private IEnumerator ScreamThenChase()
@@ -163,8 +171,9 @@ public class EntityVision : MonoBehaviour
         yield return new WaitForSeconds(2);
 
         Debug.Log($"ScreamThenChase END — agent enabled: {_agent.enabled}, isOnNavMesh: {_agent.isOnNavMesh}, pathStatus: {_agent.pathStatus}");
-        
+        screamCooldown = 5f;
         _isScreaming = false;
+ 
         _agent.speed = chaseSpeed;
         bool result = _agent.SetDestination(_lastKnownPosition);
         Debug.Log($"SetDestination result: {result}, lastKnownPos: {_lastKnownPosition}");
