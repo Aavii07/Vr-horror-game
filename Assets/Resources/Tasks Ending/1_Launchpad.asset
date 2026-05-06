@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54c546d4013c44e42ab0d2b792c3a0ff, type: 3}
   m_Name: 1_Launchpad
   m_EditorClassIdentifier: Assembly-CSharp::TaskData
-  taskName: 1. Find the newly opened launchpad
+  taskName: 1. Find newly open launchpad
   completed: 0
